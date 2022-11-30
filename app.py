@@ -50,18 +50,16 @@ from pathlib import Path
 @app.route('/downlaod')
 def downlaod_file():
     downloads_path = os.path.expanduser('~/Downloads')
-    print(downloads_path)
+    cwd = os.getcwd()
+    print('Current Working Directory is: ', cwd)
+    os.chdir(downloads_path)
+    print('New working directory is: ', os.getcwd())
     ext = req.args.get('ext')
     id = req.args.get('id')
     title = req.args.get('title')
     myurl = f"https://www.hindawi.org/books/{id}.{ext}"
     urllib.request.urlretrieve(myurl, f"{downloads_path}/{title}.{ext}")
-    # webbrowser.open(myurl)
-    # with urllib.request.urlopen(myurl) as url:
-    #     file = url.read()
-
-    # with open(f"{downloads_path}/{id}.{ext}", "wb") as f:
-    #     f.write(file)
+    
     return json.dumps({"message":"Book was downloaded successfully!"})
 
 
