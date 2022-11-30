@@ -1,6 +1,6 @@
 
 import urllib.request as ur
-
+import glob
 import requests
 import logging
 from flask import Flask
@@ -49,16 +49,20 @@ from pathlib import Path
 
 @app.route('/downlaod')
 def downlaod_file():
-    downloads_path = os.path.expanduser('~/Downloads')
-    print('working directory is: ',downlaod_file)
+    downloads_path = os.getcwd()
+    # print('working directory is: ',downlaod_file)
 
-    ext = req.args.get('ext')
-    id = req.args.get('id')
-    title = req.args.get('title')
-    myurl = f"https://www.hindawi.org/books/{id}.{ext}"
-    ur.urlretrieve(myurl, f"{downloads_path}/{title}.{ext}")
+    # ext = req.args.get('ext')
+    # id = req.args.get('id')
+    # title = req.args.get('title')
+    # myurl = f"https://www.hindawi.org/books/{id}.{ext}"
+    # ur.urlretrieve(myurl, f"{downloads_path}/{title}.{ext}")
    
-    
+    files = glob.glob(downloads_path)
+    for f in files:
+        # os.remove(f) 
+        print(f)
+        
     return json.dumps({"message":"Book was downloaded successfully!"})
 
 
@@ -87,4 +91,3 @@ if __name__ == '__main__':
 # urllib3==1.26.13
 # Werkzeug==2.2.2
 # gunicorn==20.1.0
-
