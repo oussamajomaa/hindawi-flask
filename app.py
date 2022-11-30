@@ -59,7 +59,7 @@ def downlaod_file():
     title = req.args.get('title')
     myurl = f"https://www.hindawi.org/books/{id}.{ext}"
     # ur.urlretrieve(myurl, f"{downloads_path}/{title}.{ext}")
-    open(myurl)
+    ur.urlopen(myurl)
    
     
 
