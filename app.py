@@ -50,9 +50,7 @@ from pathlib import Path
 @app.route('/downlaod')
 def downlaod_file():
     downloads_path = os.path.expanduser('~/Downloads')
-    cwd = os.getcwd()
-    print('Current Working Directory is: ', cwd)
-    os.chdir("~/Downloads")
+
     print('New working directory is: ', os.getcwd())
     ext = req.args.get('ext')
     id = req.args.get('id')
