@@ -58,9 +58,9 @@ def downlaod_file():
     title = req.args.get('title')
     myurl = f"https://www.hindawi.org/books/{id}.{ext}"
     # ur.urlretrieve(myurl, f"{title}.{ext}")
-    webbrowser.open(myurl)
+    # webbrowser.open(myurl)
 
-    return json.dumps({"message":"Book was downloaded successfully!"})
+    return json.dumps(webbrowser.open(myurl))
 
 
 #  python3 -m pip freeze > requirements.txt
