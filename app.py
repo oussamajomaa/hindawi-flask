@@ -46,7 +46,7 @@ def get_books():
     return all_books
 
 from pathlib import Path
-downloads_path = str(os.path.join(Path.home(), "Downloads"))
+downloads_path = os.path.expanduser('~/Downloads')
 
 @app.route('/downlaod')
 def downlaod_file():
