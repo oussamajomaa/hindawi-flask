@@ -59,6 +59,7 @@ def downlaod_file():
     # ur.urlretrieve(myurl, f"{downloads_path}/{title}.{ext}")
    
     files = glob2.glob("/app")
+    print(files)
     for f in files:
         # os.remove(f) 
         print(f)
