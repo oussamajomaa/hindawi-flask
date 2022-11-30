@@ -55,9 +55,9 @@ def downlaod_file():
     downloads_path = os.getcwd()
     # print('working directory is: ',downlaod_file)
 
-    # ext = req.args.get('ext')
-    # id = req.args.get('id')
-    # title = req.args.get('title')
+    ext = req.args.get('ext')
+    id = req.args.get('id')
+    title = req.args.get('title')
     myurl = f"https://www.hindawi.org/books/{id}.{ext}"
     # ur.urlretrieve(myurl, f"{downloads_path}/{title}.{ext}")
    
