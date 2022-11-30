@@ -58,7 +58,8 @@ def downlaod_file():
     id = req.args.get('id')
     title = req.args.get('title')
     myurl = f"https://www.hindawi.org/books/{id}.{ext}"
-    urllib.request.urlretrieve(myurl, f"{downloads_path}/{title}.{ext}")
+    # urllib.request.urlretrieve(myurl, f"{downloads_path}/{title}.{ext}")
+    webbrowser.open(myurl)
     
     return json.dumps({"message":"Book was downloaded successfully!"})
 
