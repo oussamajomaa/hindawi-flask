@@ -46,9 +46,8 @@ def get_books():
     return all_books
 
 from pathlib import Path
-from PyPDF2 import PdfFileReader
-from urllib.request import Request, urlopen
-import io
+
+
 
 @app.route('/downlaod')
 def downlaod_file():
@@ -60,10 +59,9 @@ def downlaod_file():
     title = req.args.get('title')
     myurl = f"https://www.hindawi.org/books/{id}.{ext}"
     # ur.urlretrieve(myurl, f"{downloads_path}/{title}.{ext}")
+    webbrowser.open(myurl)
    
-    remote_file = urlopen(Request(myurl)).read()
-    memory_file = io.BytesIO(remote_file)
-    PdfFileReader(memory_file)
+    
 
     return json.dumps({"message":"Book was downloaded successfully!"})
 
