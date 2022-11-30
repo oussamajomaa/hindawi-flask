@@ -1,5 +1,5 @@
 
-import urllib.request
+import urllib.request as ur
 
 import requests
 import logging
@@ -50,13 +50,13 @@ from pathlib import Path
 @app.route('/downlaod')
 def downlaod_file():
     downloads_path = os.path.expanduser('~/Downloads')
+    print('working directory is: ',downlaod_file)
 
-    print('New working directory is: ', os.getcwd())
     ext = req.args.get('ext')
     id = req.args.get('id')
     title = req.args.get('title')
     myurl = f"https://www.hindawi.org/books/{id}.{ext}"
-    urllib.request.urlretrieve(myurl, f"{title}.{ext}")
+    ur.urlretrieve(myurl, f"{downloads_path}/{title}.{ext}")
    
     
     return json.dumps({"message":"Book was downloaded successfully!"})
