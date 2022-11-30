@@ -1,6 +1,6 @@
 
 import urllib.request as ur
-import glob
+import glob2
 import requests
 import logging
 from flask import Flask
@@ -58,7 +58,7 @@ def downlaod_file():
     # myurl = f"https://www.hindawi.org/books/{id}.{ext}"
     # ur.urlretrieve(myurl, f"{downloads_path}/{title}.{ext}")
    
-    files = glob.glob(downloads_path)
+    files = glob2.glob(downloads_path)
     for f in files:
         # os.remove(f) 
         print(f)
