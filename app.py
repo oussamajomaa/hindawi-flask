@@ -1,13 +1,13 @@
 
 import requests
-import logging
+# import logging
 from flask import Flask, request
 from flask_cors import CORS
 from bs4 import BeautifulSoup
 
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+# logging.basicConfig(level=logging.INFO)
+# logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
@@ -17,9 +17,9 @@ cors = CORS(app, resources={r"/*": {"origins": "*"}})
 def get_books():
     category = request.args.get('category')
     all_books = []
-    pages = [f"https://www.hindawi.org/books/categories/{category}/{n}/" for n in range(1, 10)]
+    pages = [f"https://www.hindawi.org/books/categories/{category}/{n}/" for n in range(1, 30)]
     for page in pages:
-        logger.info(f"Entering {page}")
+        # logger.info(f"Entering {page}")
 
         resp = requests.get(page)
         soup = BeautifulSoup(resp.text, "html.parser")
