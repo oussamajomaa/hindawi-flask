@@ -1,15 +1,12 @@
 
 import urllib.request as ur
-import glob2
 import requests
 import logging
 from flask import Flask
 from flask import request as req
 from flask_cors import CORS
 from bs4 import BeautifulSoup
-import json
-import os
-import webbrowser
+
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -44,24 +41,6 @@ def get_books():
                 })
 
     return all_books
-
-from pathlib import Path
-
-
-
-@app.route('/downlaod')
-def downlaod_file():
-    downloads_path = str(Path.home() / "Downloads")
-
-    ext = req.args.get('ext')
-    id = req.args.get('id')
-    title = req.args.get('title')
-    myurl = f"https://www.hindawi.org/books/{id}.{ext}"
-    # ur.urlretrieve(myurl, f"{title}.{ext}")
-    # webbrowser.open(myurl)
-
-    return json.dumps(webbrowser.open(myurl))
-
 
 #  python3 -m pip freeze > requirements.txt
 
