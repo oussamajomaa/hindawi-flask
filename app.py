@@ -1,9 +1,7 @@
 
-import urllib.request as ur
 import requests
 import logging
-from flask import Flask
-from flask import request as req
+from flask import Flask, request
 from flask_cors import CORS
 from bs4 import BeautifulSoup
 
@@ -17,7 +15,7 @@ cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route('/')
 def get_books():
-    category = req.args.get('category')
+    category = request.args.get('category')
     all_books = []
     pages = [f"https://www.hindawi.org/books/categories/{category}/{n}/" for n in range(1, 10)]
     for page in pages:
